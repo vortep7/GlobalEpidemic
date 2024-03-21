@@ -28,6 +28,8 @@
 		1757CF3E2BAC96F50007E13A /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1757CF3D2BAC96F50007E13A /* InfoView.swift */; };
 		1757CF402BAC9AE00007E13A /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1757CF3F2BAC9AE00007E13A /* ConfigViewController.swift */; };
 		1757CF422BAC9E9A0007E13A /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1757CF412BAC9E9A0007E13A /* ConfigView.swift */; };
+		1757CF442BACCE3A0007E13A /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1757CF432BACCE3A0007E13A /* GeneralViewController.swift */; };
+		1757CF462BACD4970007E13A /* GeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1757CF452BACD4970007E13A /* GeneralView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		1757CF3D2BAC96F50007E13A /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		1757CF3F2BAC9AE00007E13A /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		1757CF412BAC9E9A0007E13A /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
+		1757CF432BACCE3A0007E13A /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
+		1757CF452BACD4970007E13A /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,7 @@
 				1757CEEE2BAC6BBD0007E13A /* MenuViewController.swift */,
 				1757CF3B2BAC954F0007E13A /* InfoViewController.swift */,
 				1757CF3F2BAC9AE00007E13A /* ConfigViewController.swift */,
+				1757CF432BACCE3A0007E13A /* GeneralViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 				1757CF272BAC74EC0007E13A /* MenuView.swift */,
 				1757CF3D2BAC96F50007E13A /* InfoView.swift */,
 				1757CF412BAC9E9A0007E13A /* ConfigView.swift */,
+				1757CF452BACD4970007E13A /* GeneralView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -391,6 +397,8 @@
 				1757CF352BAC82610007E13A /* UIColourExtension.swift in Sources */,
 				1757CF422BAC9E9A0007E13A /* ConfigView.swift in Sources */,
 				1757CF402BAC9AE00007E13A /* ConfigViewController.swift in Sources */,
+				1757CF442BACCE3A0007E13A /* GeneralViewController.swift in Sources */,
+				1757CF462BACD4970007E13A /* GeneralView.swift in Sources */,
 				1757CEEB2BAC6BBD0007E13A /* AppDelegate.swift in Sources */,
 				1757CEED2BAC6BBD0007E13A /* SceneDelegate.swift in Sources */,
 			);
@@ -492,7 +500,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -549,7 +557,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
