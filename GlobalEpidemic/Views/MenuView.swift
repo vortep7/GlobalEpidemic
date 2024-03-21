@@ -87,8 +87,19 @@ class MenuView: UIView {
         label.layer.shadowOpacity = 1.0
         return label
     }()
-    //MARK: - clousers for buttons action
     
+    private let labelDev: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "PIXY", size: 20)
+        label.text = "Developed by Vortep"
+        label.textColor = .white
+        return label
+    }()
+    
+    //MARK: - clousers for buttons action
+    var onLogButtonAction: (() -> Void)?
+    var onInfoButtonAction: (() -> Void)?
+
     
     //MARK: - constraints
     func constraintsForBigAnimation() {
@@ -114,10 +125,10 @@ class MenuView: UIView {
     func constraintsForMiniAnimation() {
         miniAnimationView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            miniAnimationView.topAnchor.constraint(equalTo: self.topAnchor, constant: 60),
-            miniAnimationView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -690),
+            miniAnimationView.topAnchor.constraint(equalTo: self.topAnchor, constant: 45),
+            miniAnimationView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -710),
             miniAnimationView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            miniAnimationView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -220)
+            miniAnimationView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -260)
         ])
     }
     
@@ -151,6 +162,17 @@ class MenuView: UIView {
         ])
     }
     
+    func constraintsForLabelDev() {
+        labelDev.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            labelDev.topAnchor.constraint(equalTo: self.topAnchor, constant: 780),
+            labelDev.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
+            labelDev.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 90),
+            labelDev.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -70)
+        ])
+    }
+    
+    //MARK: - setup all constraints
     func createConstraints() {
         constraintsForBigAnimation()
         constraintsForMiniAnimation()
@@ -158,8 +180,16 @@ class MenuView: UIView {
         constraintsForLabel()
         constraintsForInfoButton()
         constraintsForLocalButton()
+        constraintsForLabelDev()
     }
     
+    //MARK: - setup action for buttons
+    func createTarget() {
+        logButton.addTarget(self, action: #selector(logButtonAction), for: .touchUpInside)
+        infoButton.addTarget(self, action: #selector(infoButtonAction), for: .touchUpInside)
+    }
+    
+    //MARK: - setup all views
     func setupView() {
         self.addSubview(bigAnimationView)
         self.addSubview(miniAnimationView)
@@ -167,8 +197,10 @@ class MenuView: UIView {
         self.addSubview(label)
         self.addSubview(infoButton)
         self.addSubview(localButton)
+        self.addSubview(labelDev)
     }
     
+    //MARK: - setup animations config
     func setupAnimations() {
         bigAnimationView.loopMode = .loop
         bigAnimationView.play()
@@ -188,5 +220,15 @@ class MenuView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+//MARK: - create action for buttons
+extension MenuView {
+    @objc func logButtonAction() {
+        onLogButtonAction?()
+    }
     
+    @objc func infoButtonAction() {
+        onInfoButtonAction?()
+    }
 }
