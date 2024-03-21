@@ -24,6 +24,13 @@ class MenuView: UIView {
     }()
     
     //MARK: - create UI elements
+    
+    private let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "gray")
+        return imageView
+    }()
+    
     private let logButton:UIButton = {
         let button = UIButton()
         
@@ -122,6 +129,16 @@ class MenuView: UIView {
         ])
     }
     
+    func constraintsImageView() {
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
+            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0)
+        ])
+    }
+    
     func constraintsForMiniAnimation() {
         miniAnimationView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -181,6 +198,7 @@ class MenuView: UIView {
         constraintsForInfoButton()
         constraintsForLocalButton()
         constraintsForLabelDev()
+        constraintsImageView()
     }
     
     //MARK: - setup action for buttons
@@ -191,6 +209,7 @@ class MenuView: UIView {
     
     //MARK: - setup all views
     func setupView() {
+        self.addSubview(imageView)
         self.addSubview(bigAnimationView)
         self.addSubview(miniAnimationView)
         self.addSubview(logButton)
@@ -214,6 +233,7 @@ class MenuView: UIView {
         
         setupView()
         createConstraints()
+        createTarget()
         setupAnimations()
     }
     

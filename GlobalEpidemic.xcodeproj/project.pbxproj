@@ -24,6 +24,10 @@
 		1757CF352BAC82610007E13A /* UIColourExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1757CF342BAC82610007E13A /* UIColourExtension.swift */; };
 		1757CF382BAC84440007E13A /* PIXY.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1757CF372BAC84440007E13A /* PIXY.ttf */; };
 		1757CF3A2BAC86020007E13A /* Virus.json in Resources */ = {isa = PBXBuildFile; fileRef = 1757CF392BAC86010007E13A /* Virus.json */; };
+		1757CF3C2BAC954F0007E13A /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1757CF3B2BAC954F0007E13A /* InfoViewController.swift */; };
+		1757CF3E2BAC96F50007E13A /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1757CF3D2BAC96F50007E13A /* InfoView.swift */; };
+		1757CF402BAC9AE00007E13A /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1757CF3F2BAC9AE00007E13A /* ConfigViewController.swift */; };
+		1757CF422BAC9E9A0007E13A /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1757CF412BAC9E9A0007E13A /* ConfigView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +68,10 @@
 		1757CF342BAC82610007E13A /* UIColourExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColourExtension.swift; sourceTree = "<group>"; };
 		1757CF372BAC84440007E13A /* PIXY.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PIXY.ttf; sourceTree = "<group>"; };
 		1757CF392BAC86010007E13A /* Virus.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Virus.json; sourceTree = "<group>"; };
+		1757CF3B2BAC954F0007E13A /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		1757CF3D2BAC96F50007E13A /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		1757CF3F2BAC9AE00007E13A /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
+		1757CF412BAC9E9A0007E13A /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				1757CEEE2BAC6BBD0007E13A /* MenuViewController.swift */,
+				1757CF3B2BAC954F0007E13A /* InfoViewController.swift */,
+				1757CF3F2BAC9AE00007E13A /* ConfigViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -192,6 +202,8 @@
 			children = (
 				1757CF332BAC822E0007E13A /* ColourExtension */,
 				1757CF272BAC74EC0007E13A /* MenuView.swift */,
+				1757CF3D2BAC96F50007E13A /* InfoView.swift */,
+				1757CF412BAC9E9A0007E13A /* ConfigView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -371,10 +383,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1757CF3E2BAC96F50007E13A /* InfoView.swift in Sources */,
 				1757CF282BAC74EC0007E13A /* MenuView.swift in Sources */,
 				1757CEF52BAC6BBD0007E13A /* GlobalEpidemic.xcdatamodeld in Sources */,
 				1757CEEF2BAC6BBD0007E13A /* MenuViewController.swift in Sources */,
+				1757CF3C2BAC954F0007E13A /* InfoViewController.swift in Sources */,
 				1757CF352BAC82610007E13A /* UIColourExtension.swift in Sources */,
+				1757CF422BAC9E9A0007E13A /* ConfigView.swift in Sources */,
+				1757CF402BAC9AE00007E13A /* ConfigViewController.swift in Sources */,
 				1757CEEB2BAC6BBD0007E13A /* AppDelegate.swift in Sources */,
 				1757CEED2BAC6BBD0007E13A /* SceneDelegate.swift in Sources */,
 			);

@@ -7,9 +7,9 @@ class MenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .red
         
-        menuView.onInfoButtonAction = {[weak self] in menuView.}
+        menuView.onInfoButtonAction = {[weak self] in self?.pushInfoController()}
+        menuView.onLogButtonAction = {[weak self] in self?.pushGeneralController()}
     }
     
     override func loadView() {
@@ -19,5 +19,13 @@ class MenuViewController: UIViewController {
 }
 
 extension MenuViewController {
-    @objc func
+    @objc func pushInfoController() {
+        let nextController = InfoViewController()
+        navigationController?.pushViewController(nextController, animated: true)
+    }
+    
+    @objc func pushGeneralController() {
+        let nextController = ConfigViewController()
+        navigationController?.pushViewController(nextController, animated: true)
+    }
 }
