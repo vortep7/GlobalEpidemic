@@ -17,6 +17,7 @@ class CellConfig: UICollectionViewCell {
     
     var describe: UILabel = {
         let describe = UILabel()
+        describe.font = UIFont(name: "PIXY", size: 12)
         return describe
     }()
     
@@ -31,23 +32,18 @@ class CellConfig: UICollectionViewCell {
         describe.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        self.contentView.addSubview(name)
         self.contentView.addSubview(describe)
         self.contentView.addSubview(imageView)
 
         NSLayoutConstraint.activate([
-            name.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 1),
-            name.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 1),
-            name.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 1),
-            name.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 1),
             
-            describe.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 1),
-            describe.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 1),
+            describe.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 50),
+            describe.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -1),
             describe.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 1),
             describe.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 1),
             
             imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 1),
-            imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 1),
+            imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -50),
             imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 1),
             imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 1),
 

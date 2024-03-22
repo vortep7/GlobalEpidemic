@@ -9,6 +9,7 @@ import UIKit
 
 class GeneralViewController: UIViewController {
     var generalView: GeneralView {return self.view as! GeneralView}
+    
     var groupSize:Int?
     var infectionFactor:Int?
     var Recalculation:Int?
@@ -42,9 +43,15 @@ extension GeneralViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CellConfig.self)", for: indexPath) as! CellConfig
         
         let myArray = Source.shared.createArray(count: groupSize!)
- 
+        
+        //MARK: - setup view for cell
+        cell.describe.text = myArray[indexPath.item].describe
+        cell.imageView.image = UIImage(named: myArray[indexPath.item].image)
+        cell.imageView.contentMode = .scaleAspectFill
+        
+        
+        cell.layer.cornerRadius = 10
+
         return cell
     }
-    
-    
 }

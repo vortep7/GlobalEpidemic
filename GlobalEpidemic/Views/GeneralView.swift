@@ -16,10 +16,7 @@ class GeneralView:UIView {
         return imageView
     }()
     
-    let collectionView:UICollectionView = {
-        let collectionView = UICollectionView()
-        return collectionView
-    }()
+    var collectionView:UICollectionView
     
     //MARK: - constraints
     func constraintsForImageView() {
@@ -35,7 +32,7 @@ class GeneralView:UIView {
     func constraintsForCollectionView() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 80),
+            collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 150),
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -20),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 20)
@@ -56,7 +53,13 @@ class GeneralView:UIView {
     }
     
     override init(frame: CGRect) {
+        let layout = GeneralView.setupLayout()
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.layer.cornerRadius = 12
         super.init(frame: frame)
+        
+        let pinchGesture = UIPinchGestureRecognizer(target:self, action: #selector(handlePinchGesture(_:)))
+        collectionView.addGestureRecognizer(pinchGesture)
         
         setupView()
         createConstraints()
@@ -65,6 +68,34 @@ class GeneralView:UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
     
+    //MARK: - collection view layout
+    private static func setupLayout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 60, height: 70)
+        layout.minimumLineSpacing = 50
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 30, bottom: 10, right: 30)
+        return layout
+    }
+}
+
+//MARK: - gesture handler
+extension GeneralView {
+    @objc func handlePinchGesture(_ gestureRecognizer: UIPinchGestureRecognizer) {
+        guard let collectionView = gestureRecognizer.view as? UICollectionView else { return }
+        
+        switch gestureRecognizer.state {
+        case .began, .changed:
+            let scale = gestureRecognizer.scale
+            let currentTransform = collectionView.transform
+            collectionView.transform = currentTransform.scaledBy(x: scale, y: scale)
+            gestureRecognizer.scale = 1.0
+        case .ended, .cancelled:
+            UIView.animate(withDuration: 0.3) {
+                collectionView.transform = .identity
+            }
+        default:
+            break
+        }
+    }
 }
