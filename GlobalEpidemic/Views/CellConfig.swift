@@ -42,8 +42,8 @@ class CellConfig: UICollectionViewCell {
             describe.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 1),
             describe.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 1),
             
-            imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 1),
-            imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -50),
+            imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 15),
+            imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -40),
             imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 1),
             imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 1),
 

@@ -31,6 +31,7 @@ struct Source {
     private let nameArray = ["q","r"]
     private let describeArray = ["Doctor","Engineer","Lawyer","Teacher","Artist"]
     private let imageArray = ["firstMan","firstGirl","thirdGirl"]
-
+    
+    
 }
 

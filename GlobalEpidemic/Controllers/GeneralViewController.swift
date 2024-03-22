@@ -9,6 +9,7 @@ import UIKit
 
 class GeneralViewController: UIViewController {
     var generalView: GeneralView {return self.view as! GeneralView}
+    var count = 0
     
     var groupSize:Int?
     var infectionFactor:Int?
@@ -25,12 +26,22 @@ class GeneralViewController: UIViewController {
     
     override func loadView() {
         self.view = GeneralView(frame: UIScreen.main.bounds)
+        generalView.positiveAmount.text = "\(self.groupSize!)"
+        generalView.negativeAmount.text = "\(self.count)"
     }
 }
 
 //MARK: - implement delegate protocol
 extension GeneralViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! CellConfig
+        cell.imageView.image = UIImage(named: "old")
+        
+        self.count += 1
+        
+        generalView.positiveAmount.text = "\(self.groupSize! - count)"
+        generalView.negativeAmount.text = "\(self.count)"
+    }
 }
 
 //MARK: - implement data source protocol
@@ -49,9 +60,6 @@ extension GeneralViewController: UICollectionViewDataSource {
         cell.imageView.image = UIImage(named: myArray[indexPath.item].image)
         cell.imageView.contentMode = .scaleAspectFill
         
-        
-        cell.layer.cornerRadius = 10
-
         return cell
     }
 }

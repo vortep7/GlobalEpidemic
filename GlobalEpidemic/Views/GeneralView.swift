@@ -16,6 +16,39 @@ class GeneralView:UIView {
         return imageView
     }()
     
+    let progressView: UIProgressView = {
+        let progressView = UIProgressView()
+        return progressView
+    }()
+    
+    private let positiveLabel: UILabel = {
+        let label = UILabel()
+        label.text = TextForLabel.positiveText.rawValue
+        label.font = UIFont(name: "PIXY", size: 25)
+        return label
+    }()
+    
+    
+    private let negativeLabel: UILabel = {
+        let label = UILabel()
+        label.text = TextForLabel.negativeText.rawValue
+        label.font = UIFont(name: "PIXY", size: 25)
+        return label
+    }()
+    
+    let positiveAmount: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "PIXY", size: 25)
+        return label
+    }()
+    
+    
+    let negativeAmount: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "PIXY", size: 25)
+        return label
+    }()
+    
     var collectionView:UICollectionView
     
     //MARK: - constraints
@@ -29,10 +62,50 @@ class GeneralView:UIView {
         ])
     }
     
+    func constraintsForPositiveLabel() {
+        positiveLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            positiveLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 90),
+            positiveLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -670),
+            positiveLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
+            positiveLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -100)
+        ])
+    }
+    
+    func constraintsForNegativeLabel() {
+        negativeLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            negativeLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 90),
+            negativeLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -670),
+            negativeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 300),
+            negativeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
+        ])
+    }
+    
+    func constraintsForPositiveAmount() {
+        positiveAmount.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            positiveAmount.topAnchor.constraint(equalTo: self.topAnchor, constant: 120),
+            positiveAmount.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -640),
+            positiveAmount.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
+            positiveAmount.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -100)
+        ])
+    }
+    
+    func constraintsForNegativeAmount() {
+        negativeAmount.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            negativeAmount.topAnchor.constraint(equalTo: self.topAnchor, constant: 120),
+            negativeAmount.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -640),
+            negativeAmount.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 300),
+            negativeAmount.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
+        ])
+    }
+    
     func constraintsForCollectionView() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 150),
+            collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -20),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 20)
@@ -43,6 +116,10 @@ class GeneralView:UIView {
     func createConstraints() {
         constraintsForImageView()
         constraintsForCollectionView()
+        constraintsForPositiveLabel()
+        constraintsForNegativeLabel()
+        constraintsForPositiveAmount()
+        constraintsForNegativeAmount()
     }
 
     
@@ -50,6 +127,10 @@ class GeneralView:UIView {
     func setupView() {
         self.addSubview(imageView)
         self.addSubview(collectionView)
+        self.addSubview(positiveLabel)
+        self.addSubview(negativeLabel)
+        self.addSubview(positiveAmount)
+        self.addSubview(negativeAmount)
     }
     
     override init(frame: CGRect) {
@@ -74,7 +155,7 @@ class GeneralView:UIView {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 60, height: 70)
         layout.minimumLineSpacing = 50
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 30, bottom: 10, right: 30)
+        layout.sectionInset = UIEdgeInsets(top: 30, left: 30, bottom: 10, right: 30)
         return layout
     }
 }
@@ -98,4 +179,12 @@ extension GeneralView {
             break
         }
     }
+}
+
+enum TextForLabel:String {
+    case positiveText = "Healthy:"
+    case negativeText = "ill:"
+    case positiveAmount = "1"
+    case negativeAmount = "2"
+    case nothing = "0"
 }
