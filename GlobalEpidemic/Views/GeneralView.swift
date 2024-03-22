@@ -16,7 +16,7 @@ class GeneralView:UIView {
         return imageView
     }()
     
-    private let collectionView:UICollectionView = {
+    let collectionView:UICollectionView = {
         let collectionView = UICollectionView()
         return collectionView
     }()

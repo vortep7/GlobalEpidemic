@@ -55,6 +55,7 @@ extension ConfigViewController {
 
 }
 
+//MARK: - alert action
 extension ConfigViewController {
     func presentFirstAlert() {
         present(configView.alert, animated: true, completion: nil)
