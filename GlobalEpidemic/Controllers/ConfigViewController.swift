@@ -22,18 +22,45 @@ class ConfigViewController: UIViewController {
     
 }
 
+//MARK: - text field handler
 extension ConfigViewController {
     @objc func actionButton() {
         let nextController = GeneralViewController()
-
-        if let number = Int(configView.firstTextField.text ?? "0") {
-            if number < 201 {
-                nextController.receivedText = number
+        
+        if let numberStringFirst = configView.firstTextField.text, let numberFirst = Int(numberStringFirst) {
+            if numberFirst < 201 {
+                nextController.groupSize = numberFirst
+                
+                if let numberStringSecond = configView.secondTextField.text, let numberSecond = Int(numberStringSecond) {
+                    nextController.infectionFactor = numberSecond
+                    
+                    if let numberStringThird = configView.thirdTextField.text, let numberThird = Int(numberStringThird) {
+                        nextController.Recalculation = numberThird
+                    } else {
+                        presentSecondAlert()
+                    }
+                } else {
+                    presentSecondAlert()
+                }
+                
             } else {
-                present(configView.alert, animated: true, completion: nil)
+                presentFirstAlert()
             }
+        } else {
+            presentSecondAlert()
         }
         
         navigationController?.pushViewController(nextController, animated: true)
+    }
+
+}
+
+extension ConfigViewController {
+    func presentFirstAlert() {
+        present(configView.alert, animated: true, completion: nil)
+    }
+    
+    func presentSecondAlert() {
+        present(configView.alertSecond, animated: true, completion: nil)
     }
 }

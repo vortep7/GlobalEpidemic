@@ -42,6 +42,13 @@ class ConfigView: UIView {
         return alert
     }()
     
+    let alertSecond: UIAlertController = {
+        let alert = UIAlertController(title: "Only digit", message: "Repeat", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(alertAction)
+        return alert
+    }()
+    
     private let firstLabel: UILabel = {
         let label = UILabel()
         

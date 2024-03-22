@@ -8,13 +8,16 @@
 import UIKit
 
 class GeneralViewController: UIViewController {
-    var receivedText:Int?
-
+    var groupSize:Int?
+    var infectionFactor:Int?
+    var Recalculation:Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(receivedText!)
+        print(groupSize!)
+        print(infectionFactor!)
+        print(Recalculation!)
     }
     
     override func loadView() {
