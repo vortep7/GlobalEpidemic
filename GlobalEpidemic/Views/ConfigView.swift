@@ -94,7 +94,6 @@ final class ConfigView: UIView {
             firstTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
         ])
     }
-    
     func constraintsForSecondTextField() {
         secondTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -185,7 +184,7 @@ final class ConfigView: UIView {
 
 enum TextForTextField:String  {
     case firstText = " Group Size (max: 2000)"
-    case secondText = " Infection Factor (max: 6)"
+    case secondText = " Infection Factor (max: 8)"
     case thirdText = " Recalculation"
 }
 
