@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InfoView: UIView {
+final class InfoView: UIView {
 
     //MARK: - create UI elements
     

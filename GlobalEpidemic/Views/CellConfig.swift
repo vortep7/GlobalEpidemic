@@ -10,11 +10,6 @@ import UIKit
 class CellConfig: UICollectionViewCell {
     
     //MARK: - create UI elements
-    var name: UILabel = {
-        let name = UILabel()
-        return name
-    }()
-    
     var describe: UILabel = {
         let describe = UILabel()
         describe.font = UIFont(name: "PIXY", size: 12)
@@ -28,7 +23,6 @@ class CellConfig: UICollectionViewCell {
     
     //MARK: - constraints for cell elements
     func setupCell() {
-        name.translatesAutoresizingMaskIntoConstraints = false
         describe.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
         

@@ -8,7 +8,7 @@
 import Lottie
 import UIKit
 
-class MenuView: UIView {
+final class MenuView: UIView {
     
     //MARK: - create Lottie Animation
     private let bigAnimationView:LottieAnimationView = {

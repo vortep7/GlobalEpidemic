@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ConfigView: UIView {
+final class ConfigView: UIView {
     //MARK: create UI elements
     var onActionButton: (() ->Void)?
     
@@ -183,8 +183,8 @@ class ConfigView: UIView {
 }
 
 enum TextForTextField:String  {
-    case firstText = " Group Size"
-    case secondText = " Infection Factor"
+    case firstText = " Group Size (max: 2000)"
+    case secondText = " Infection Factor (max: 6)"
     case thirdText = " Recalculation"
 }
 

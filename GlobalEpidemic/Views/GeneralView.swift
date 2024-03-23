@@ -7,7 +7,7 @@
 import UIKit
 import Foundation
 
-class GeneralView:UIView {
+final class GeneralView:UIView {
     
     //MARK: - create UI elements
     private let imageView: UIImageView = {
@@ -38,6 +38,7 @@ class GeneralView:UIView {
     
     let positiveAmount: UILabel = {
         let label = UILabel()
+        label.textColor = .positiveAmount
         label.font = UIFont(name: "PIXY", size: 25)
         return label
     }()
@@ -45,6 +46,7 @@ class GeneralView:UIView {
     
     let negativeAmount: UILabel = {
         let label = UILabel()
+        label.textColor = .negativeAmount
         label.font = UIFont(name: "PIXY", size: 25)
         return label
     }()
@@ -105,7 +107,7 @@ class GeneralView:UIView {
     func constraintsForCollectionView() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
+            collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 230),
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -20),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 20)
