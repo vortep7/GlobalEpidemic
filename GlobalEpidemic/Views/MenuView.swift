@@ -65,23 +65,6 @@ final class MenuView: UIView {
         return button
     }()
     
-    private let localButton:UIButton = {
-        let button = UIButton()
-        
-        button.backgroundColor = .localButtonColour
-        button.tintColor = .white
-        button.setTitle("Language", for: .normal)
-        button.titleLabel?.font = UIFont(name: "PIXY", size: 16)
-        button.layer.shadowOffset = CGSize(width: 2, height: 2)
-        button.layer.shadowColor = UIColor.white.cgColor
-        button.layer.shadowOpacity = 0.7
-        button.layer.shadowRadius = 5
-        
-        button.layer.cornerRadius = 25
-        
-        return button
-    }()
-    
     private let label: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "PIXY", size: 38)
@@ -113,9 +96,9 @@ final class MenuView: UIView {
         bigAnimationView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             bigAnimationView.topAnchor.constraint(equalTo: self.topAnchor, constant: 250),
-            bigAnimationView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -400),
-            bigAnimationView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 60),
-            bigAnimationView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -60)
+            bigAnimationView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -350),
+            bigAnimationView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50),
+            bigAnimationView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50)
         ])
     }
     
@@ -169,16 +152,6 @@ final class MenuView: UIView {
         ])
     }
     
-    func constraintsForLocalButton() {
-        localButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            localButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 60),
-            localButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -750),
-            localButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 270),
-            localButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15)
-        ])
-    }
-    
     func constraintsForLabelDev() {
         labelDev.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -196,7 +169,6 @@ final class MenuView: UIView {
         constraintsForLogButton()
         constraintsForLabel()
         constraintsForInfoButton()
-        constraintsForLocalButton()
         constraintsForLabelDev()
         constraintsImageView()
     }
@@ -215,7 +187,6 @@ final class MenuView: UIView {
         self.addSubview(logButton)
         self.addSubview(label)
         self.addSubview(infoButton)
-        self.addSubview(localButton)
         self.addSubview(labelDev)
     }
     

@@ -1,7 +1,7 @@
 import UIKit
 
 class GeneralViewController: UIViewController {
-    
+    let networkManager = NetworkManager.shared
     var generalView: GeneralView {return self.view as! GeneralView}
     
     var groupSize:Int?
@@ -34,27 +34,26 @@ extension GeneralViewController {
     func changeImage(_ indexPath: IndexPath) {
         cellStates[indexPath.row] = true
         generalView.collectionView.reloadItems(at: [indexPath])
-        spreadInfection(from: indexPath)
+        spreadInfection(from: indexPath) 
     }
 
     func spreadInfection(from indexPath: IndexPath) {
         var epidemicArray: [Int] = []
-        let countFalse = cellStates.filter {!$0}.count
         let countTrue = cellStates.filter {$0}.count
         let time = self.recalculation!
         let newRandomArray = createRandomArray(indexPath)
-        
+
         if countTrue == 1 {
             self.generalView.positiveAmount.text = "\(self.cellStates.count - newRandomArray.count)"
-            self.generalView.negativeAmount.text = "\(newRandomArray.count)"
+            self.generalView.negativeAmount.text = "\(newRandomArray.count+1)"
         }
+        
         
         for index in newRandomArray {
             if index >= 0 && index < groupSize ?? 0 && !cellStates[index] {
                 
                 epidemicArray.append(index)
                 cellStates[index] = true
-                
                 DispatchQueue.main.asyncAfter(deadline: .now() + Double(time)) {
                     self.spreadInfection(from: IndexPath(row: index, section: 0))
                     
@@ -102,8 +101,8 @@ extension GeneralViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CellConfig.self)", for: indexPath) as! CellConfig
         
         DispatchQueue.global(qos: .userInteractive).async {
-            let myArray = Source.shared.createArray(count: self.groupSize!)
-            
+            let myArray = Source(networkManager: self.networkManager).createArray(count: self.groupSize!)
+
             DispatchQueue.main.async {
                 cell.describe.text = myArray[indexPath.item].describe
                 

@@ -13,10 +13,14 @@ struct Person {
 }
 
 struct Source {
-    static let shared = Source()
-    private init() {}
+    let networkManager: NetworkService?
+    
+    init(networkManager: NetworkService) {
+        self.networkManager = networkManager
+    }
     
     func createArray(count:Int) -> [Person] {
+        
         var people = [Person]()
         for _ in 0..<count {
             let person = Person(describe: describeArray.randomElement()!,
@@ -26,7 +30,8 @@ struct Source {
         return people
     }
     
-    private let describeArray = ["Doctor","Engineer","Lawyer","Teacher","Artist"]
-    private let imageArray = ["firstMan","firstGirl","thirdGirl"]
+    private let imageArray = ["firstMan", "firstGirl", "thirdGirl"]
+    private let describeArray = ["Doctor", "Student", "Teacher"]
+
 }
 

@@ -26,8 +26,8 @@ extension MenuViewController {
     }
     
     @objc func pushGeneralController() {
-        menuView.animationForLogButton()
         let nextController = ConfigViewController()
+        menuView.animationForLogButton()
         navigationController?.pushViewController(nextController, animated: true)
     }
 }
