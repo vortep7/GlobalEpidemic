@@ -19,7 +19,7 @@ extension UIColor {
     }
     
     static var positiveAmount: UIColor {
-        #colorLiteral(red: 0.0528666125, green: 0.6164772727, blue: 0.03801252662, alpha: 1)
+        #colorLiteral(red: 0, green: 0.557249147, blue: 1, alpha: 1)
     }
     
     static var negativeAmount: UIColor {

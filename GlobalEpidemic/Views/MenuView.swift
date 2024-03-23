@@ -19,7 +19,6 @@ final class MenuView: UIView {
     
     private let miniAnimationView:LottieAnimationView = {
         let animationView = LottieAnimationView(name: "Virus")
-        animationView.contentMode = .scaleAspectFit
         return animationView
     }()
     
@@ -27,7 +26,8 @@ final class MenuView: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "gray")
+        imageView.image = UIImage(named: "newBack")
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
@@ -250,5 +250,28 @@ extension MenuView {
     
     @objc func infoButtonAction() {
         onInfoButtonAction?()
+    }
+}
+
+//MARK: - animation for buttons
+extension MenuView {
+    func animationForLogButton() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.logButton.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        }) { _ in
+            UIView.animate(withDuration: 0.5) {
+                self.logButton.transform = CGAffineTransform.identity
+            }
+        }
+    }
+    
+    func animationForInfoButton() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.infoButton.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        }) { _ in
+            UIView.animate(withDuration: 0.5) {
+                self.infoButton.transform = CGAffineTransform.identity
+            }
+        }
     }
 }

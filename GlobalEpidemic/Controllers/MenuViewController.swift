@@ -21,10 +21,12 @@ class MenuViewController: UIViewController {
 extension MenuViewController {
     @objc func pushInfoController() {
         let nextController = InfoViewController()
+        menuView.animationForInfoButton()
         navigationController?.pushViewController(nextController, animated: true)
     }
     
     @objc func pushGeneralController() {
+        menuView.animationForLogButton()
         let nextController = ConfigViewController()
         navigationController?.pushViewController(nextController, animated: true)
     }

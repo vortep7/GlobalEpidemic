@@ -10,7 +10,6 @@
 		1757CEEB2BAC6BBD0007E13A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1757CEEA2BAC6BBD0007E13A /* AppDelegate.swift */; };
 		1757CEED2BAC6BBD0007E13A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1757CEEC2BAC6BBD0007E13A /* SceneDelegate.swift */; };
 		1757CEEF2BAC6BBD0007E13A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1757CEEE2BAC6BBD0007E13A /* MenuViewController.swift */; };
-		1757CEF52BAC6BBD0007E13A /* GlobalEpidemic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1757CEF32BAC6BBD0007E13A /* GlobalEpidemic.xcdatamodeld */; };
 		1757CEF72BAC6BBF0007E13A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1757CEF62BAC6BBF0007E13A /* Assets.xcassets */; };
 		1757CEFA2BAC6BBF0007E13A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1757CEF92BAC6BBF0007E13A /* Base */; };
 		1757CF052BAC6BBF0007E13A /* GlobalEpidemicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1757CF042BAC6BBF0007E13A /* GlobalEpidemicTests.swift */; };
@@ -56,7 +55,6 @@
 		1757CEEA2BAC6BBD0007E13A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1757CEEC2BAC6BBD0007E13A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1757CEEE2BAC6BBD0007E13A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		1757CEF42BAC6BBD0007E13A /* GlobalEpidemic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GlobalEpidemic.xcdatamodel; sourceTree = "<group>"; };
 		1757CEF62BAC6BBF0007E13A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1757CEF92BAC6BBF0007E13A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1757CEFB2BAC6BBF0007E13A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -132,7 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				1757CF1D2BAC6F2A0007E13A /* Application */,
-				1757CF202BAC6F5B0007E13A /* Services */,
 				1757CF1F2BAC6F460007E13A /* Settings */,
 				1757CF1E2BAC6F370007E13A /* Controllers */,
 				1757CF232BAC6FC30007E13A /* Models */,
@@ -188,22 +185,6 @@
 				1757CEF62BAC6BBF0007E13A /* Assets.xcassets */,
 			);
 			path = Settings;
-			sourceTree = "<group>";
-		};
-		1757CF202BAC6F5B0007E13A /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				1757CF212BAC6F650007E13A /* CoreData */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		1757CF212BAC6F650007E13A /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				1757CEF32BAC6BBD0007E13A /* GlobalEpidemic.xcdatamodeld */,
-			);
-			path = CoreData;
 			sourceTree = "<group>";
 		};
 		1757CF222BAC6F970007E13A /* Views */ = {
@@ -397,7 +378,6 @@
 			files = (
 				1757CF3E2BAC96F50007E13A /* InfoView.swift in Sources */,
 				1757CF282BAC74EC0007E13A /* MenuView.swift in Sources */,
-				1757CEF52BAC6BBD0007E13A /* GlobalEpidemic.xcdatamodeld in Sources */,
 				1757CEEF2BAC6BBD0007E13A /* MenuViewController.swift in Sources */,
 				1757CF3C2BAC954F0007E13A /* InfoViewController.swift in Sources */,
 				1757CF352BAC82610007E13A /* UIColourExtension.swift in Sources */,
@@ -764,19 +744,6 @@
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		1757CEF32BAC6BBD0007E13A /* GlobalEpidemic.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				1757CEF42BAC6BBD0007E13A /* GlobalEpidemic.xcdatamodel */,
-			);
-			currentVersion = 1757CEF42BAC6BBD0007E13A /* GlobalEpidemic.xcdatamodel */;
-			path = GlobalEpidemic.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 1757CEDF2BAC6BBD0007E13A /* Project object */;
 }

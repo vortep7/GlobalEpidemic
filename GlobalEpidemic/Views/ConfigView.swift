@@ -14,7 +14,8 @@ final class ConfigView: UIView {
     //MARK: - create UI elements
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "bluePicture")
+        imageView.image = UIImage(named: "minimal")
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
@@ -52,9 +53,9 @@ final class ConfigView: UIView {
     private let firstLabel: UILabel = {
         let label = UILabel()
         
-        label.font = UIFont(name: "PIXY", size: 30)
+        label.font = UIFont(name: "PIXY", size: 31)
         label.text = "Enter the parameters"
-        label.textColor = .black
+        label.textColor = .white
   
         return label
     }()
@@ -130,7 +131,7 @@ final class ConfigView: UIView {
             firstLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 70),
             firstLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -670),
             firstLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            firstLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
+            firstLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0)
         ])
     }
     

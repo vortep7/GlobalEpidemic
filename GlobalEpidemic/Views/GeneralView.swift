@@ -12,7 +12,8 @@ final class GeneralView:UIView {
     //MARK: - create UI elements
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "bluePicture")
+        imageView.image = UIImage(named: "green")
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
@@ -24,7 +25,7 @@ final class GeneralView:UIView {
     private let positiveLabel: UILabel = {
         let label = UILabel()
         label.text = TextForLabel.positiveText.rawValue
-        label.font = UIFont(name: "PIXY", size: 25)
+        label.font = UIFont(name: "PIXY", size: 30)
         return label
     }()
     
@@ -32,14 +33,14 @@ final class GeneralView:UIView {
     private let negativeLabel: UILabel = {
         let label = UILabel()
         label.text = TextForLabel.negativeText.rawValue
-        label.font = UIFont(name: "PIXY", size: 25)
+        label.font = UIFont(name: "PIXY", size: 30)
         return label
     }()
     
     let positiveAmount: UILabel = {
         let label = UILabel()
         label.textColor = .positiveAmount
-        label.font = UIFont(name: "PIXY", size: 25)
+        label.font = UIFont(name: "PIXY", size: 27)
         return label
     }()
     
@@ -47,7 +48,7 @@ final class GeneralView:UIView {
     let negativeAmount: UILabel = {
         let label = UILabel()
         label.textColor = .negativeAmount
-        label.font = UIFont(name: "PIXY", size: 25)
+        label.font = UIFont(name: "PIXY", size: 27)
         return label
     }()
     
@@ -67,8 +68,8 @@ final class GeneralView:UIView {
     func constraintsForPositiveLabel() {
         positiveLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            positiveLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 90),
-            positiveLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -670),
+            positiveLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 120),
+            positiveLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -650),
             positiveLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             positiveLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -100)
         ])
@@ -77,18 +78,18 @@ final class GeneralView:UIView {
     func constraintsForNegativeLabel() {
         negativeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            negativeLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 90),
-            negativeLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -670),
-            negativeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 300),
-            negativeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
+            negativeLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 120),
+            negativeLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -650),
+            negativeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 280),
+            negativeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50)
         ])
     }
     
     func constraintsForPositiveAmount() {
         positiveAmount.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            positiveAmount.topAnchor.constraint(equalTo: self.topAnchor, constant: 120),
-            positiveAmount.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -640),
+            positiveAmount.topAnchor.constraint(equalTo: self.topAnchor, constant: 140),
+            positiveAmount.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -620),
             positiveAmount.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             positiveAmount.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -100)
         ])
@@ -97,8 +98,8 @@ final class GeneralView:UIView {
     func constraintsForNegativeAmount() {
         negativeAmount.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            negativeAmount.topAnchor.constraint(equalTo: self.topAnchor, constant: 120),
-            negativeAmount.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -640),
+            negativeAmount.topAnchor.constraint(equalTo: self.topAnchor, constant: 140),
+            negativeAmount.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -620),
             negativeAmount.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 300),
             negativeAmount.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
         ])
