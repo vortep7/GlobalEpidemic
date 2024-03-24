@@ -13,6 +13,7 @@ struct Person {
 }
 
 struct Source {
+    //MARK: - DI pattern
     let networkManager: NetworkService?
     
     init(networkManager: NetworkService) {

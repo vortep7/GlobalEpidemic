@@ -8,7 +8,7 @@
 import UIKit
 
 class ConfigViewController: UIViewController {
-    var configView: ConfigView {return self.view as! ConfigView}
+    private var configView: ConfigView {return self.view as! ConfigView}
 
     override func viewDidLoad() {
         super.viewDidLoad()

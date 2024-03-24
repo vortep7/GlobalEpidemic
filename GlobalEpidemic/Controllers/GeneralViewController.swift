@@ -1,23 +1,23 @@
 import UIKit
 
 class GeneralViewController: UIViewController {
-    let networkManager = NetworkManager.shared
-    var generalView: GeneralView {return self.view as! GeneralView}
+    private var generalView: GeneralView {return self.view as! GeneralView}
     
     var groupSize:Int?
     var infectionFactor:Int?
     var recalculation:Int?
-    
-    var cellStates = [Bool]()
+    let networkManager = NetworkManager.shared
+    private var cellStates = [Bool]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         generalView.collectionView.dataSource = self
         generalView.collectionView.delegate = self
-        
+                
         cellStates = Array(repeating: false, count: groupSize ?? 0)
 
+        generalView.collectionView.allowsMultipleSelection = true
         generalView.collectionView.register(CellConfig.self, forCellWithReuseIdentifier: "\(CellConfig.self)")
     }
     
@@ -25,7 +25,7 @@ class GeneralViewController: UIViewController {
         self.view = GeneralView(frame: UIScreen.main.bounds)
         
         generalView.positiveAmount.text = "\(self.groupSize!)"
-        generalView.negativeAmount.text = "0"
+        generalView.negativeAmount.text = "\(cellStates.filter {$0}.count)"
     }
 }
 
@@ -34,20 +34,19 @@ extension GeneralViewController {
     func changeImage(_ indexPath: IndexPath) {
         cellStates[indexPath.row] = true
         generalView.collectionView.reloadItems(at: [indexPath])
-        spreadInfection(from: indexPath) 
+        spreadInfection(from: indexPath)
     }
-
+    
     func spreadInfection(from indexPath: IndexPath) {
         var epidemicArray: [Int] = []
         let countTrue = cellStates.filter {$0}.count
         let time = self.recalculation!
         let newRandomArray = createRandomArray(indexPath)
-
+        
         if countTrue == 1 {
             self.generalView.positiveAmount.text = "\(self.cellStates.count - newRandomArray.count)"
             self.generalView.negativeAmount.text = "\(newRandomArray.count+1)"
         }
-        
         
         for index in newRandomArray {
             if index >= 0 && index < groupSize ?? 0 && !cellStates[index] {
@@ -102,7 +101,7 @@ extension GeneralViewController: UICollectionViewDataSource {
         
         DispatchQueue.global(qos: .userInteractive).async {
             let myArray = Source(networkManager: self.networkManager).createArray(count: self.groupSize!)
-
+            
             DispatchQueue.main.async {
                 cell.describe.text = myArray[indexPath.item].describe
                 
@@ -114,3 +113,4 @@ extension GeneralViewController: UICollectionViewDataSource {
         return cell
     }
 }
+

@@ -3,7 +3,7 @@ import Lottie
 
 class MenuViewController: UIViewController {
     
-    var menuView: MenuView {return self.view as! MenuView}
+    private var menuView: MenuView {return self.view as! MenuView}
 
     override func viewDidLoad() {
         super.viewDidLoad()
