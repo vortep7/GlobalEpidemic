@@ -17,7 +17,6 @@ class GeneralViewController: UIViewController {
                 
         cellStates = Array(repeating: false, count: groupSize ?? 0)
 
-        generalView.collectionView.allowsMultipleSelection = true
         generalView.collectionView.register(CellConfig.self, forCellWithReuseIdentifier: "\(CellConfig.self)")
     }
     
@@ -26,11 +25,13 @@ class GeneralViewController: UIViewController {
         
         generalView.positiveAmount.text = "\(self.groupSize!)"
         generalView.negativeAmount.text = "\(cellStates.filter {$0}.count)"
+        generalView.percentageOfInfected.text = "\(cellStates.filter {$0}.count)% of infected"
     }
 }
 
 //MARK: - change cell image
 extension GeneralViewController {
+    
     func changeImage(_ indexPath: IndexPath) {
         cellStates[indexPath.row] = true
         generalView.collectionView.reloadItems(at: [indexPath])
@@ -41,46 +42,39 @@ extension GeneralViewController {
         var epidemicArray: [Int] = []
         let countTrue = cellStates.filter {$0}.count
         let time = self.recalculation!
-        let newRandomArray = createRandomArray(indexPath)
-        
+        let newRandomArray = InfectionManager.shared.createInfectionArray(indexPath, self.infectionFactor)
+                
         if countTrue == 1 {
             self.generalView.positiveAmount.text = "\(self.cellStates.count - newRandomArray.count)"
-            self.generalView.negativeAmount.text = "\(newRandomArray.count+1)"
+            self.generalView.negativeAmount.text = "\(newRandomArray.count + 1)"
+            self.generalView.percentageOfInfected.text = "\(newRandomArray.count + 1)"
         }
-        
+        let dispatchGroup = DispatchGroup() // Создаем группу диспетчеризации
+
         for index in newRandomArray {
             if index >= 0 && index < groupSize ?? 0 && !cellStates[index] {
-                
                 epidemicArray.append(index)
                 cellStates[index] = true
+                DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+                    guard let self = self else { return }
+                    let countFalse = self.cellStates.filter {!$0}.count
+                    let percentageInfected = Double(self.cellStates.count - countFalse) / Double(self.cellStates.count) * 100
+                    
+                    DispatchQueue.main.async {
+                        self.generalView.positiveAmount.text = "\(countFalse)"
+                        self.generalView.negativeAmount.text = "\(self.cellStates.count - countFalse)"
+                        self.generalView.percentageOfInfected.text = "\(Int(percentageInfected))% of infected"
+
+                    }
+                }
                 DispatchQueue.main.asyncAfter(deadline: .now() + Double(time)) {
                     self.spreadInfection(from: IndexPath(row: index, section: 0))
-                    
-                    let countFalse = self.cellStates.filter { !$0 }.count
-                    self.generalView.positiveAmount.text = "\(countFalse)"
-                    self.generalView.negativeAmount.text = "\(self.cellStates.count - countFalse)"
                 }
             }
         }
-        
         generalView.collectionView.reloadItems(at: epidemicArray.map { IndexPath(row: $0, section: 0) })
     }
-}
 
-//MARK: - generate array of infected cells
-extension GeneralViewController {
-    func createRandomArray(_ indexPath: IndexPath) -> [Int]{
-        var neighboringIndices: [Int] = []
-        for number in [-1, 1, 5, -5, -6, 6, -4, 4] {
-            neighboringIndices.append(indexPath.row + number)
-        }
-        
-        let randomNumber = Int.random(in: 1...self.infectionFactor!)
-        let shuffledIndices = neighboringIndices.shuffled()
-        let subNeighboringIndices = Array(shuffledIndices.prefix(randomNumber))
-        
-        return subNeighboringIndices
-    }
 }
 
 //MARK: - implement delegate protocol

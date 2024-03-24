@@ -29,7 +29,7 @@ extension ConfigViewController {
         let nextController = GeneralViewController()
         
         if let numberStringFirst = configView.firstTextField.text, let numberFirst = Int(numberStringFirst), 
-            numberFirst < 2001 {
+            numberFirst < 4000 {
             nextController.groupSize = numberFirst
             
             guard let numberStringSecond = configView.secondTextField.text, let numberSecond = Int(numberStringSecond) else {

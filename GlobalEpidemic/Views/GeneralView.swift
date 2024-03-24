@@ -12,7 +12,7 @@ final class GeneralView:UIView {
     //MARK: - create UI elements
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "green")
+        imageView.image = UIImage(named: "blackBack")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -24,6 +24,7 @@ final class GeneralView:UIView {
     
     private let positiveLabel: UILabel = {
         let label = UILabel()
+        label.textColor = UIColor.white
         label.text = TextForLabel.positiveText.rawValue
         label.font = UIFont(name: "PIXY", size: 30)
         return label
@@ -32,6 +33,7 @@ final class GeneralView:UIView {
     
     private let negativeLabel: UILabel = {
         let label = UILabel()
+        label.textColor = UIColor.white
         label.text = TextForLabel.negativeText.rawValue
         label.font = UIFont(name: "PIXY", size: 30)
         return label
@@ -52,6 +54,13 @@ final class GeneralView:UIView {
         return label
     }()
     
+    let percentageOfInfected: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.font = UIFont(name: "PIXY", size: 34)
+        return label
+    }()
+    
     var collectionView:UICollectionView
     
     //MARK: - constraints
@@ -68,18 +77,28 @@ final class GeneralView:UIView {
     func constraintsForPositiveLabel() {
         positiveLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            positiveLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 120),
-            positiveLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -650),
+            positiveLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
+            positiveLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -670),
             positiveLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             positiveLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -100)
+        ])
+    }
+    
+    func constraintsForPercent() {
+        percentageOfInfected.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            percentageOfInfected.topAnchor.constraint(equalTo: self.topAnchor, constant: 700),
+            percentageOfInfected.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
+            percentageOfInfected.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 70),
+            percentageOfInfected.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40)
         ])
     }
     
     func constraintsForNegativeLabel() {
         negativeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            negativeLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 120),
-            negativeLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -650),
+            negativeLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
+            negativeLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -670),
             negativeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 280),
             negativeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50)
         ])
@@ -109,7 +128,7 @@ final class GeneralView:UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 230),
-            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
+            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -150),
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -20),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 20)
         ])
@@ -122,6 +141,7 @@ final class GeneralView:UIView {
         constraintsForPositiveLabel()
         constraintsForNegativeLabel()
         constraintsForPositiveAmount()
+        constraintsForPercent()
         constraintsForNegativeAmount()
     }
 
@@ -134,12 +154,13 @@ final class GeneralView:UIView {
         self.addSubview(negativeLabel)
         self.addSubview(positiveAmount)
         self.addSubview(negativeAmount)
+        self.addSubview(percentageOfInfected)
     }
     
     override init(frame: CGRect) {
         let layout = GeneralView.setupLayout()
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.layer.cornerRadius = 12
+        collectionView.layer.cornerRadius = 20
         super.init(frame: frame)
         
         let pinchGesture = UIPinchGestureRecognizer(target:self, action: #selector(handlePinchGesture(_:)))
@@ -171,9 +192,11 @@ extension GeneralView {
         switch gestureRecognizer.state {
         case .began, .changed:
             let scale = gestureRecognizer.scale
-            let currentTransform = collectionView.transform
-            collectionView.transform = currentTransform.scaledBy(x: scale, y: scale)
-            gestureRecognizer.scale = 1.0
+            if scale > 1.0 {
+                let currentTransform = collectionView.transform
+                collectionView.transform = currentTransform.scaledBy(x: scale, y: scale)
+                gestureRecognizer.scale = 1.0
+            }
         case .ended, .cancelled:
             UIView.animate(withDuration: 0.3) {
                 collectionView.transform = .identity

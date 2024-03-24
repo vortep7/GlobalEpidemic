@@ -43,5 +43,4 @@ extension NetworkManager:NetworkService {
             }
         }.resume()
     }
-    
 }
