@@ -8,7 +8,7 @@
 
 ---
 
-## Application have user-friendly interface. Besides there are conditional constaints for user (For example, max infectionFactor = 8)
+## Application have user-friendly interface. Besides there are conditional constaints for user.
 
 <br>
 <p float="left">
