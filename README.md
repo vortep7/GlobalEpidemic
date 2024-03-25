@@ -8,7 +8,8 @@
 
 ---
 
-## Application have user-friendly interface. 
+## Application have user-friendly interface. Besides there are conditional constaints for user (For example, max infectionFactor = 8)
+
 <br>
 <p float="left">
   <img src="https://github.com/vortep7/GlobalEpidemic/blob/dev/ImageStore/viewScreen.jpg" width="300" />
@@ -16,3 +17,5 @@
   <img src="https://github.com/vortep7/GlobalEpidemic/blob/dev/ImageStore/configScreen.jpg" width="300" /> 
 </p>
 <br>
+
+---
