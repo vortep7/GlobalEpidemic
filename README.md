@@ -8,7 +8,7 @@
 
 ---
 
-## Application have user-friendly interface. Besides there are conditional constaints for user.Added a zoom for easy viewing of infected
+## Application has user-friendly interface. Besides there are conditional constaints for user.Added a zoom for easy viewing of infected
 
 <br>
 <p float="left">
