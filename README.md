@@ -24,3 +24,6 @@
 
 ![EpidemicVideo](https://github.com/vortep7/GlobalEpidemic/raw/dev/ImageStore/EpidemicVideo.gif)
 
+---
+
+## Also, there is a Network Manager. In the future, thanks to it, you will be able to retrieve data from the network for custom cells.
