@@ -26,4 +26,7 @@
 
 ---
 
-## Also, there is a Network Manager. In the future, thanks to it, you will be able to retrieve data from the network for custom cells.
+# Opportunities for improvement:
+
+* There is a Network Manager. In the future, thanks to it, you will be able to retrieve data from the network for custom cells.
+* After suspending the infection, you can display an alert with information about the game session
