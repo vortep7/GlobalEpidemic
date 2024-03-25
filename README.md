@@ -21,5 +21,6 @@
 ---
 
 ## Demonstration of the spread of infection:
-<gif src="https://github.com/vortep7/GlobalEpidemic/blob/dev/ImageStore/EpidemicVideo-2.gif" width="500" height="570"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+
+![EpidemicVideo](https://github.com/vortep7/GlobalEpidemic/raw/dev/ImageStore/EpidemicVideo.gif)
 
