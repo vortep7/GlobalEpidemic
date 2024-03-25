@@ -17,8 +17,8 @@ class NetworkManager {
     private let decoder = JSONDecoder()
 }
 
+
 extension NetworkManager:NetworkService {
-    
     private func generateURL() -> URL? {
         return URL(string: "https://randomuser.me/api")
     }

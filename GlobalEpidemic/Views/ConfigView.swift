@@ -183,9 +183,9 @@ final class ConfigView: UIView {
 }
 
 enum TextForTextField:String  {
-    case firstText = " Group Size (max: 2000)"
+    case firstText = " Group Size (max: 4000)"
     case secondText = " Infection Factor (max: 8)"
-    case thirdText = " Recalculation"
+    case thirdText = " Recalculation (seconds)"
 }
 
 extension ConfigView {
